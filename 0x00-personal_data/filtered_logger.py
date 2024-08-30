@@ -74,10 +74,10 @@ def get_logger() -> logging.Logger:
 
 
 class RedactingFormatter(logging.Formatter):
-    
+
     """
     Redacting Formatter class
-    
+
     Methods:
         format: overrides the format method in the logging.Formatter class.
                 It modifies the log message by applying a redaction filter
@@ -89,10 +89,12 @@ class RedactingFormatter(logging.Formatter):
     SEPARATOR = ";"
 
     def __init__(self, fields: List[str]):
+        """iniitialization"""
         self.fields = fields
         super(RedactingFormatter, self).__init__(self.FORMAT)
 
     def format(self, record: logging.LogRecord) -> str:
+        """overrides the format method in the logging.Formatter class"""
         record.msg = filter_datum(self.fields, self.REDACTION,
                                   record.getMessage(), self.SEPARATOR)
         return (super(RedactingFormatter, self).format(record))
