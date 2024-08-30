@@ -11,7 +11,7 @@ import re
 import logging
 
 
-PII_FIELDS: Tuple = ("email", "phone", "ssn", "password", "ip")
+PII_FIELDS: Tuple = ("name", "email", "phone", "ssn", "password")
 
 
 def get_db() -> mysql.connector.connection.MySQLConnection:
