@@ -74,8 +74,15 @@ def get_logger() -> logging.Logger:
 
 
 class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class
-        """
+    
+    """
+    Redacting Formatter class
+    
+    Methods:
+        format: overrides the format method in the logging.Formatter class.
+                It modifies the log message by applying a redaction filter
+                before formatting it.
+    """
 
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
