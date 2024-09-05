@@ -49,8 +49,8 @@ def before_request() -> str:
     """to do before request"""
     if auth is None:
         return
-    k = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
-    if not (auth.require_auth(request.path, k)):
+    excl_path = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
+    if not (auth.require_auth(request.path, excl_path)):
         return
     if auth.authorization_header(request) is None:
         abort(401)

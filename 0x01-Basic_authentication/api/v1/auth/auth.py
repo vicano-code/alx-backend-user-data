@@ -17,7 +17,7 @@ class Auth:
         """require the authorization"""
         if path is None:
             return True
-        if excluded_paths == [] or None:
+        if excluded_paths is None or excluded_paths == []:
             return True
         if path[-1] != '/':
             path += '/'
