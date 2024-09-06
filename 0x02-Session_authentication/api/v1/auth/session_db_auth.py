@@ -43,7 +43,7 @@ class SessionDBAuth(SessionExpAuth):
         user = user_sess[0]
         if user is None:
             return None
-        
+
         expired_time = user.created_at + \
             timedelta(seconds=self.session_duration)
 
