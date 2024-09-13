@@ -95,8 +95,11 @@ def update_password():
     except KeyError:
         abort(403)
 
-    user = AUTH.find_user_by(email=email)
-    msg = {"email": user.email, "message": "Password updated"}
+    try:
+        AUTH.update_password(reset_token, new_password)
+    except ValueError:
+        abort(403)
+    msg = {"email": email, "message": "Password updated"}
     return jsonify(msg), 200
 
 
